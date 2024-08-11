@@ -1,5 +1,6 @@
 import axios from 'axios';
-import cheerio from 'cheerio';
+// import cheerio from 'cheerio';
+import * as cheerio from 'cheerio';
 import express from 'express';
 
 const PORT = process.env.PORT || 5000;
