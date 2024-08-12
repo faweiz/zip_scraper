@@ -37,7 +37,9 @@ app.get('/zip/:zipId', async (req, res) => {
     let data = {
       City: '', Counties: '', TimeZone: '', LocalTime: '', Population: '', AreaCode:'', LandArea:'', QuickLink:'',
       CurrentPopulation:'', Households:'', TwentyPopulation:'', AverageHouseValue:'', PopulationDensity:'', PersonsPerHousehold:'', AverageIncome:'', AverageFamilySize:'', 
-    };
+      whitePopulation:'', blackPopulation:'', hispanicPopulation:'', asianPopulation:'', americanIndianPopulation:'', hawaiianPopulation:'', otherPopulation:'',  
+      whitePopulationPercent:'', blackPopulationPercent:'', hispanicPopulationPercent:'', asianPopulationPercent:'', americanIndianPopulationPercent:'', hawaiianPopulationPercent:'', otherPopulationPercent:'',  
+    }
 
     data.City = $('#info > table > tbody > tr:nth-child(1) > td:nth-child(2)').text().trim();
     data.Counties = $('#info > table > tbody > tr:nth-child(3) > td:nth-child(2)').text().trim();
@@ -48,6 +50,7 @@ app.get('/zip/:zipId', async (req, res) => {
     data.LandArea = $('#info > table > tbody > tr:nth-child(10) > td:nth-child(2)').text().trim();
     data.QuickLink = $('#info > table > tbody > tr:nth-child(11) > td:nth-child(2)').text().trim();
 
+    // ZIP Code  Demographics
     data.CurrentPopulation = $('#demographics > div:nth-child(2) > table > tbody > tr:nth-child(1) > td:nth-child(2)').text().trim();
     data.Households = $('#demographics > div:nth-child(3) > table > tbody > tr:nth-child(1) > td:nth-child(2)').text().trim();
     data.TwentyPopulation = $('#demographics > div:nth-child(2) > table > tbody > tr:nth-child(2) > td:nth-child(2)').text().trim();
@@ -57,7 +60,24 @@ app.get('/zip/:zipId', async (req, res) => {
     data.AverageIncome = $('#demographics > div:nth-child(2) > table > tbody > tr:nth-child(4) > td:nth-child(2)').text().trim();
     data.AverageFamilySize = $('#demographics > div:nth-child(3) > table > tbody > tr:nth-child(4) > td:nth-child(2)').text().trim();
 
+    // Population by Race
+    data.whitePopulation = $('#race-0 > div.dCTa > table > tbody > tr:nth-child(1) > td:nth-child(2)').text().trim();
+    data.blackPopulation = $('#race-0 > div.dCTa > table > tbody > tr:nth-child(2) > td:nth-child(2)').text().trim();
+    data.hispanicPopulation = $('#race-0 > div.dCTa > table > tbody > tr:nth-child(3) > td:nth-child(2)').text().trim();
+    data.asianPopulation = $('#race-0 > div.dCTa > table > tbody > tr:nth-child(4) > td:nth-child(2)').text().trim();
+    data.americanIndianPopulation = $('#race-0 > div.dCTa > table > tbody > tr:nth-child(5) > td:nth-child(2)').text().trim();
+    data.hawaiianPopulation = $('#race-0 > div.dCTa > table > tbody > tr:nth-child(6) > td:nth-child(2)').text().trim();
+    data.otherPopulation = $('#race-0 > div.dCTa > table > tbody > tr:nth-child(7) > td:nth-child(2)').text().trim();
 
+    // Population by Race Percent
+    data.whitePopulationPercent = $('#race-0 > div.dCTa > table > tbody > tr:nth-child(1) > td:nth-child(3)').text().trim();
+    data.blackPopulationPercent = $('#race-0 > div.dCTa > table > tbody > tr:nth-child(2) > td:nth-child(3)').text().trim();
+    data.hispanicPopulationPercent = $('#race-0 > div.dCTa > table > tbody > tr:nth-child(3) > td:nth-child(3)').text().trim();
+    data.asianPopulationPercent = $('#race-0 > div.dCTa > table > tbody > tr:nth-child(4) > td:nth-child(3)').text().trim();
+    data.americanIndianPopulationPercent = $('#race-0 > div.dCTa > table > tbody > tr:nth-child(5) > td:nth-child(3)').text().trim();
+    data.hawaiianPopulationPercent = $('#race-0 > div.dCTa > table > tbody > tr:nth-child(6) > td:nth-child(3)').text().trim();
+    data.otherPopulationPercent = $('#race-0 > div.dCTa > table > tbody > tr:nth-child(7) > td:nth-child(3)').text().trim();
+    
     console.log(data);
     res.json(data);
 
